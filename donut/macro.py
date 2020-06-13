@@ -33,7 +33,10 @@ class Macro:
         print("Macro started ...")
         while not self.end:
             for waypoint in self.waypoints:
-                self.moveTo(waypoint)
+                while True:
+                    is_success = self.moveTo(waypoint)
+                    if is_success:
+                        break
 
         print("Macro ended ...")
 
@@ -76,7 +79,9 @@ class Macro:
 
                 randPosition = (randX, randY)
                 pyautogui.moveTo(randPosition, duration=0.2)
+                return True
             else:
                 print("\033[91mWaypoint image not found ...\033[0m")
+                return False
         except:
             pass
