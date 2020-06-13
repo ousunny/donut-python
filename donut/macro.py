@@ -47,6 +47,13 @@ class Macro:
             print(f"{i} : {self.waypoints[i]}")
         print(f"---------------------------------")
 
+    def delete_waypoint(self, index):
+        self.waypoints.pop(index)
+        print(f"---------------------------------")
+        for i in range(0, len(self.waypoints)):
+            print(f"{i} : {self.waypoints[i]}")
+        print(f"---------------------------------")
+
     def add_waypoint(self):
         region = self.listener.listen()
         if not None in region:

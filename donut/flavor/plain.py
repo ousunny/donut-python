@@ -24,7 +24,9 @@ class Plain:
             elif choice == 1:
                 pass
             elif choice == 2:
-                pass
+                self.macro.show_waypoints()
+                index = int(input("Waypoint to remove: "))
+                self.macro.delete_waypoint(index)
             elif choice == 3:
                 self.macro.show_waypoints()
             elif choice == 4:
