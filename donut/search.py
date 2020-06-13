@@ -1,7 +1,7 @@
 import pyautogui
 
 
-class Image:
+class Search:
     def __init__(self):
         self.image = None
 

@@ -2,14 +2,14 @@ import pyautogui
 from pynput import keyboard
 from random import randint, uniform
 from listener import Listener
-from image import Image
+from search import Search
 
 
 class Macro:
     def __init__(self):
         pyautogui.PAUSE = round(uniform(1.5, 2.3), 2)
         self.listener = Listener()
-        self.image = Image()
+        self.search = Search()
         self.bglistener = None
         self.waypoints = []
         self.end = False
@@ -47,7 +47,7 @@ class Macro:
     def add_waypoint(self):
         region = self.listener.listen()
         if not None in region:
-            image = self.image.find_image(region=region)
+            image = self.search.find_image(region=region)
             if image:
                 self.waypoints.append(
                     {
@@ -64,7 +64,7 @@ class Macro:
             if not random:
                 pyautogui.moveTo(waypoint["position"], duration=0.2)
 
-            if self.image.find_image(image=waypoint["image"]):
+            if self.search.find_image(image=waypoint["image"]):
                 randX = randint(
                     waypoint["position"][0],
                     waypoint["position"][0] + waypoint["box"][0],
